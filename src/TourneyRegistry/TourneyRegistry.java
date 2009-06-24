@@ -194,6 +194,32 @@ public class TourneyRegistry
 	public String executeCreateGame(String [] commandAndParameters)
 	{
 		String returnString="";
+		if (commandAndParameters.length>3)
+		{
+			returnString="Error creating game: Too many arguments";	
+		}
+		else if (commandAndParameters.length<3)
+		{
+			returnString="Error creating game: Too few arguments";	
+		}
+		else if (!teams.containsKey(commandAndParameters[1]))
+		{
+			returnString="Error creating game: Specified team does not exist";	
+		}
+		else if (!teams.containsKey(commandAndParameters[2]))
+		{
+			returnString="Error creating game: Specified team does not exist";	
+		}
+		else
+		{
+			Team teamA=teams.get(commandAndParameters[1]);
+			Team teamB=teams.get(commandAndParameters[2]);
+			Game newGame=new Game(teamA, teamB);
+			int gameNumber=games.size()+1;
+			games.put(""+gameNumber, newGame);			
+			returnString="Game #"+gameNumber+" added successfully";
+			
+		}
 		return returnString;
 	}
 	

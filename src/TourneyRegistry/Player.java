@@ -2,8 +2,7 @@ package TourneyRegistry;
 
 public class Player
 {
-	private String name;
-	private int number;
+	private String name;	
 	private Team team;
 	
 	public Player(String name)
@@ -31,15 +30,6 @@ public class Player
 		return name;
 	}
 	
-	public void setNumber(String newNumber)
-	{
-		name=newNumber;
-	}
-	
-	public int getNumber()
-	{
-		return number;
-	}
 	
 	
 }//end player
