@@ -18,8 +18,10 @@ public class SimplifiedInterface
 			inputString=in.nextLine();
 			if (!inputString.equalsIgnoreCase("exit"))
 			{
-				//call parser
+				System.out.println(registry.runCommand(inputString));
 			}
 		} while (!inputString.equalsIgnoreCase("exit"));
-	}
-}
+	}//end main
+	
+	
+}//end class

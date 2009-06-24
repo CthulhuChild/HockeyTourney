@@ -9,9 +9,9 @@ public class TourneyRegistry
 		parser=new StringParser();
 	}//end constructor
 	
-	public String runCommand(String inputCommand)
+	public String runCommand(String inputString)
 	{
-		parser.parseCommand(inputCommand);
+		parser.parseCommand(inputString);
 		return "Command Executed";
 	}
 	
