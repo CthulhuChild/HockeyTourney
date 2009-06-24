@@ -63,37 +63,52 @@ public class TourneyRegistry
 	
 	public String executeHelp(String [] commandAndParameters)
 	{
-		return null;
-	}
+		String returnString="";
+		returnString+="The following commands are available: \n\n";
+		returnString+="addteam \"<Team Name>\"                              -> Adds a team to the tournament\n";
+		returnString+="addcoach \"<Coach Name>\" \"<Team Name>\"              -> Adds a coach to the specified team\n";
+		returnString+="addplayer \"<player Name>\" \"<Team Name>\"            -> Adds a player to the specified team\n";
+		returnString+="creategame \"<1st team's name>\" \"<2nd team's name>\" -> Creates a match between the specified teams\n";
+		returnString+="setGameResult <gameID> \"<Winning Team's Name>\"     -> Declares the specified team the winner\n";
+		returnString+="report                                             -> Reports all details of the tournament";
+	
+		return returnString;
+	}//end execute help
 	
 	public String executeAddTeam(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 	public String executeAddCoach(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 	public String executeAddPlayer(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 	public String executeCreateGame(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 	public String executeSetGameResult(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 	public String executeReport(String [] commandAndParameters)
 	{
-		return null;
+		String returnString="";
+		return returnString;
 	}
 	
 }//end class

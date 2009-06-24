@@ -12,7 +12,7 @@ public class SimplifiedInterface
 		
 		Scanner in=new Scanner(System.in);
 		String inputString;					
-		System.out.println("Welcome to the Hockey Tourniment. Please enter a command:");
+		System.out.println("Welcome to the Hockey Tournament. Please enter a command:");
 		do 
 		{
 			inputString=in.nextLine();
