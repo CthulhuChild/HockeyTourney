@@ -32,8 +32,7 @@ public class TourneyRegistry
 	
 	public TourneyRegistry()
 	{
-		parser=new StringParser();
-		
+		parser=new StringParser();		
 		teams=new HashMap<String, Team>();
 		coaches=new HashMap<String, Coach>();
 		players=new HashMap<String, Player>();
@@ -43,7 +42,7 @@ public class TourneyRegistry
 	public String runCommand(String inputString)
 	{
 		String [] commandAndParameters;
-		commandAndParameters=parser.parseCommand(inputString);
+		commandAndParameters=parser.parseCommand(inputString.toLowerCase());
 				
 		String returnString="Invalid Command";
 		if (commandAndParameters.length>0)
@@ -99,21 +98,96 @@ public class TourneyRegistry
 		return returnString;
 	}//end execute help
 	
+	//I'm not sure I'm happy with how I did these commands. In future I might do
+	//them in a seperate class, and write exceptions for them, rather than
+	//passing an error message back.
+	
 	public String executeAddTeam(String [] commandAndParameters)
 	{
 		String returnString="";
+		if (commandAndParameters.length>2)
+		{
+			returnString="Error adding team: Too many arguments";	
+		}
+		else if (teams.containsKey(commandAndParameters[1]))
+		{
+			returnString="Error adding team: Team name already exists";	
+		}
+		else
+		{
+			teams.put(commandAndParameters[1], new Team(commandAndParameters[1]));
+			returnString="Team \""+commandAndParameters[1]+"\" added successfully";	
+		}
 		return returnString;
 	}
 	
 	public String executeAddCoach(String [] commandAndParameters)
 	{
 		String returnString="";
+		if (commandAndParameters.length>3)
+		{
+			returnString="Error adding coach: Too many arguments";	
+		}
+		else if (commandAndParameters.length<3)
+		{
+			returnString="Error adding coach: Too few arguments";	
+		}
+		else if (coaches.containsKey(commandAndParameters[1]))
+		{
+			returnString="Error adding coach: Duplicate coach already exists";	
+		}
+		else if (!teams.containsKey(commandAndParameters[2]))
+		{
+			returnString="Error adding coach: Specified team does not exist";	
+		}
+		else
+		{
+			Team coachesTeam=teams.get(commandAndParameters[2]);
+			if (coachesTeam.getCoach()!=null)
+			{
+				returnString="Error adding coach: specified team already has a coach";	
+			}
+			else
+			{
+			Coach newCoach=new Coach(commandAndParameters[1]);
+			newCoach.setTeam(coachesTeam);
+			coachesTeam.setCoach(newCoach);
+			coaches.put(commandAndParameters[1], newCoach);			
+			returnString="Coach \""+commandAndParameters[1]+"\" added successfully";
+			}
+		}
 		return returnString;
 	}
 	
 	public String executeAddPlayer(String [] commandAndParameters)
 	{
 		String returnString="";
+		if (commandAndParameters.length>3)
+		{
+			returnString="Error adding player: Too many arguments";	
+		}
+		else if (commandAndParameters.length<3)
+		{
+			returnString="Error adding player: Too few arguments";	
+		}
+		else if (players.containsKey(commandAndParameters[1]))
+		{
+			returnString="Error adding player: Duplicate coach already exists";	
+		}
+		else if (!teams.containsKey(commandAndParameters[2]))
+		{
+			returnString="Error adding player: Specified team does not exist";	
+		}
+		else
+		{
+			Team playersTeam=teams.get(commandAndParameters[2]);
+			Player newPlayer=new Player(commandAndParameters[1]);
+			newPlayer.setTeam(playersTeam);
+			playersTeam.addPlayer(newPlayer);			
+			players.put(commandAndParameters[1], newPlayer);			
+			returnString="Player \""+commandAndParameters[1]+"\" added successfully";
+			
+		}
 		return returnString;
 	}
 	

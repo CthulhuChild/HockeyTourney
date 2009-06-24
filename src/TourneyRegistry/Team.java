@@ -4,10 +4,12 @@ import java.util.HashMap;
 
 public class Team
 {
+	private String name;
 	private HashMap<String,Player> players;
 	private Coach coach;
-	public Team()
+	public Team(String name)
 	{
+		this.name=name;
 		players=new HashMap<String, Player>();	
 	}
 	
