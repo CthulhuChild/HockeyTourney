@@ -1,19 +1,43 @@
 package TourneyRegistry;
 
+import java.util.HashMap;
 import java.util.Vector;
+
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
 
 public class TourneyRegistry
 {
 
 	StringParser parser;
-	Vector<String> acceptedCommands;
+	//I know it seems bizzare to use hashsets to manage 
+	//something as trivial as this, but without knowing 
+	//how this project might be expanded, they provide
+	//the simplest way of quickly matching a query to a
+	//record (IE, I will repeatedly want to bring up the
+	//object representing a team using the teams name.
 	
+	//I should note that all of this could be avoided 
+	//(and the requirements of the asignment met) simply
+	//by using fixed length arrays of unreasonable size,
+	//or vectors, and just treat all the data as simple
+	//strings or ints. I make the brazen assumption that
+	//this is supposed to be a test of my object oriented
+	//programing abilities, and thus take the complicated
+	//(but expandable/maintainable) route.
 	
+	HashMap<String,Team> teams;
+	HashMap<String,Coach> coaches;
+	HashMap<String,Player> players;
+	HashMap<String,Game> games;
 	
 	public TourneyRegistry()
 	{
 		parser=new StringParser();
-
+		
+		teams=new HashMap<String, Team>();
+		coaches=new HashMap<String, Coach>();
+		players=new HashMap<String, Player>();
+		games=new HashMap<String, Game>();
 	}//end constructor
 	
 	public String runCommand(String inputString)
