@@ -12,9 +12,10 @@ public class TestingBed
 	StringParser parser;
 	TourneyRegistry registry;
 	String [] parsedCommands;
+	String returnedOutput;
     @Before public void setUp() 
     { 
-    	registry=new TourneyRegistry();
+    	
     	parser=new StringParser();    	    	
     } //end setup
 
@@ -112,11 +113,12 @@ public class TestingBed
     		   (parsedCommands[3].equals("52")));
     }
     
-  /*  @Test public void outputParsedCommands()
+    @Test  public void TourneyRegistry()   
     {
-    	for (int x=0; x<parsedCommands.length; x++)
-    	{
-    		System.out.println("|"+parsedCommands[x]+"|");
-    	}
-    }*/
+    	//garbage input
+    	registry=new TourneyRegistry();
+    	returnedOutput=registry.runCommand("asdasd sdf sdasd asd \" dsd \" ");
+    	System.out.println(returnedOutput);
+    	assertTrue(returnedOutput.equalsIgnoreCase("The command \"asdasd\" was not recognized."));
+    }
 } //end testing bed

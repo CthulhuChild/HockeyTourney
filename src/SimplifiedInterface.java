@@ -16,7 +16,7 @@ public class SimplifiedInterface
 		do 
 		{
 			inputString=in.nextLine();
-			if (!inputString.equalsIgnoreCase("exit"))
+			if (!inputString.equalsIgnoreCase("exit")&&(inputString.length()>0))
 			{
 				System.out.println(registry.runCommand(inputString));
 			}
