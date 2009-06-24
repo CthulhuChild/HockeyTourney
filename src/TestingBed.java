@@ -31,7 +31,7 @@ public class TestingBed
     {
     	//quote at start
     	parsedCommands=parser.parseCommand("\"AddTeam \"The Fighting Quackers\"");
-    	
+    	//outputParsedCommands();
     	assertTrue((parsedCommands.length==2)&&
     		   (parsedCommands[0].equals("AddTeam"))&&
     		   (parsedCommands[1].equals("The Fighting Quackers")));
@@ -112,11 +112,11 @@ public class TestingBed
     		   (parsedCommands[3].equals("52")));
     }
     
-    public void outputParsedList()
+  /*  @Test public void outputParsedCommands()
     {
     	for (int x=0; x<parsedCommands.length; x++)
     	{
     		System.out.println("|"+parsedCommands[x]+"|");
     	}
-    }
+    }*/
 } //end testing bed

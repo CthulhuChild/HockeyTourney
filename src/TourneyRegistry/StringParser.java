@@ -25,8 +25,9 @@ public class StringParser
 		for (int x=0; x<splitSubString.length; x++)
 		{
 			splitSubString[x]=splitSubString[x].trim();
-			if (!splitSubString.equals(""))
+			if (!splitSubString[x].equals(""))
 			{				
+				
 				tokenVector.add(splitSubString[x]);
 			}
 		}//end for loop
@@ -35,11 +36,14 @@ public class StringParser
 	public String [] parseCommand(String inputCommand)
 	{
 		Vector<String> tokenVector=new Vector<String>();	
+		
 		inputCommand=inputCommand.trim();
+		boolean unquotedTextToggle=true;
+		if (inputCommand.charAt(0)=='\"')
+			unquotedTextToggle=false;
 		
 		String [] splitString = inputCommand.split("\"");
 		
-		boolean unquotedTextToggle=true;
 		for (int x=0; x<splitString.length; x++)
 		{
 			splitString[x]=splitString[x].trim();
@@ -49,8 +53,9 @@ public class StringParser
 				addUnquotedTextTokens(splitString[x],tokenVector);
 			}
 		
-			if ((!unquotedTextToggle)&&(!splitString.equals("")))
+			if ((!unquotedTextToggle)&&(!splitString[x].equals("")))
 			{
+				
 				tokenVector.add(splitString[x]);
 			}												
 			unquotedTextToggle=!unquotedTextToggle;
