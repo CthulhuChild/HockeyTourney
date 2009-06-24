@@ -226,6 +226,36 @@ public class TourneyRegistry
 	public String executeSetGameResult(String [] commandAndParameters)
 	{
 		String returnString="";
+		if (commandAndParameters.length>3)
+		{
+			returnString="Error entering game result: Too many arguments";	
+		}
+		else if (commandAndParameters.length<3)
+		{
+			returnString="Error entering game result: Too few arguments";	
+		}
+		else if (!games.containsKey(commandAndParameters[1]))
+		{
+			returnString="Error entering game result: Game # does not exist.";	
+		}
+		else
+		{
+			Game updatedGame=games.get(commandAndParameters[1]);
+			if (!updatedGame.includesTeam(commandAndParameters[2]))
+				{
+				returnString="Error entering game result: Specified team did not play that game";	
+				}
+			else if (updatedGame.getWinner()!=null)
+				{
+				returnString="Error entering game result: results already entered";	
+				}
+			else
+			{
+			updatedGame.setWinner(teams.get(commandAndParameters[2]));
+			returnString="Game #"+commandAndParameters[1]+"'s result entered successfully";
+			}
+			
+		}
 		return returnString;
 	}
 	

@@ -30,4 +30,15 @@ public class Game
 		}
 		return returnValue;
 	}//end includes team
+	
+	public void setWinner(Team theWinner)
+	{
+		winner=theWinner;
+		theWinner.incrimentWins();
+	}
+	
+	public Team getWinner()
+	{
+		return winner;
+	}
 }//end game class
