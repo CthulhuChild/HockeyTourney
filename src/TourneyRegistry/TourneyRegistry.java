@@ -1,6 +1,9 @@
 package TourneyRegistry;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Vector;
 
 import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
@@ -262,6 +265,21 @@ public class TourneyRegistry
 	public String executeReport(String [] commandAndParameters)
 	{
 		String returnString="";
+		Collection<Team> teamsCollection=teams.values();		
+		Iterator<Team> iter=teamsCollection.iterator();
+		returnString+="Team Name                Score\n";
+		Team currentTeam;
+		while (iter.hasNext())
+		{
+			currentTeam=iter.next();
+			returnString+=currentTeam.getName();
+			for (int i=currentTeam.getName().length(); i<27; i++)
+			{
+				returnString+=" ";
+			}
+			returnString+=+currentTeam.getWins()+"\n";
+		}
+		
 		return returnString;
 	}
 	
